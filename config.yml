@@ -1,0 +1,28 @@
+name: Emotion Music Generator
+version: 1.0.0
+description: Real-time emotion detection and music recommendation system
+
+# Installation instructions
+install:
+  - Install Python 3.7 or higher
+  - Install VLC Media Player
+  - Run: pip install -r requirements.txt
+
+# Usage
+usage: |
+  cd src
+  python app.py
+
+# Features
+features:
+  - Real-time facial emotion detection using deep learning
+  - Automatic music selection based on detected emotions
+  - Support for 7 emotion categories
+  - Confidence-based music switching
+  - Live video feed with emotion overlay
+
+# Author
+author: Your Name
+
+# License
+license: MIT

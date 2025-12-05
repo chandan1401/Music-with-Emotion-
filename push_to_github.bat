@@ -1,0 +1,99 @@
+@echo off
+REM Emotion Music Generator - GitHub Push Helper for Windows
+REM Run this script to push your code to GitHub
+
+echo.
+echo ============================================================
+echo      Emotion Music Generator - GitHub Push Helper
+echo ============================================================
+echo.
+
+REM Check if in correct directory
+if not exist "requirements.txt" (
+    echo ERROR: requirements.txt not found!
+    echo Please run this script from emotion-music-generator2 directory
+    pause
+    exit /b 1
+)
+
+echo [OK] Found project files
+echo.
+
+REM Step 1: Configure Git
+echo [STEP 1] Configure Git User
+set /p github_user="Enter GitHub Username: "
+set /p full_name="Enter Your Full Name: "
+set /p user_email="Enter Your Email: "
+
+git config user.name "%full_name%"
+git config user.email "%user_email%"
+echo [OK] Git configured
+echo.
+
+REM Step 2: Initialize git if needed
+if not exist ".git" (
+    echo [STEP 2] Initialize Git Repository
+    git init
+    echo [OK] Git repository initialized
+    echo.
+)
+
+REM Step 3: Add files
+echo [STEP 3] Add All Files to Git
+git add .
+echo [OK] Files added
+echo.
+
+REM Step 4: Create commit
+echo [STEP 4] Create Initial Commit
+git commit -m "Initial commit: Emotion Music Generator with complete documentation"
+echo [OK] Commit created
+echo.
+
+REM Step 5: Add remote
+echo [STEP 5] Add GitHub Remote
+echo.
+echo Go to https://github.com/new and create a new repository named:
+echo   emotion-music-generator
+echo.
+echo Then copy the repository URL below:
+echo.
+set /p repo_url="Enter your GitHub repository URL: "
+
+git remote add origin "%repo_url%" 2>nul || git remote set-url origin "%repo_url%"
+echo [OK] Remote repository added
+echo.
+
+REM Step 6: Push
+echo [STEP 6] Push to GitHub
+git branch -M main
+git push -u origin main
+
+if %errorlevel% equ 0 (
+    echo.
+    echo ============================================================
+    echo            Successfully Pushed to GitHub!
+    echo ============================================================
+    echo.
+    echo Your repository is now available at:
+    echo   %repo_url%
+    echo.
+    echo Next steps:
+    echo   1. Visit your repository on GitHub
+    echo   2. Add a project description
+    echo   3. Add topics: emotion-detection, music-generator
+    echo   4. Share with your community!
+    echo.
+) else (
+    echo.
+    echo ERROR during push. Please check:
+    echo   1. GitHub repository exists
+    echo   2. You have push permissions
+    echo   3. Your GitHub credentials are correct
+    echo.
+    echo Manual push command:
+    echo   git push -u origin main
+    echo.
+)
+
+pause
