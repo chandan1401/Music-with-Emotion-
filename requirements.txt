@@ -1,9 +1,7 @@
-opencv-python==4.10.0.84
-deepface==0.0.93
-tensorflow==2.17.0
-numpy==1.26.4
-pandas==2.2.2
-pygame==2.6.0
-mediapipe==0.10.14
-python-vlc>=3.0.0
-streamlit>=1.28.0
+opencv-python>=4.8.0
+deepface>=0.0.93
+numpy>=1.24.0
+pandas>=2.0.0
+pygame>=2.4.0
+Pillow>=10.0.0
+opencv-contrib-python>=4.8.0
